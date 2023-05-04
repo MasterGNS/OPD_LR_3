@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{url_for('static', filename='variant.js')}}"></script>
+  <title>Объемы геометрических фигур</title>
+</head>
+<body onload=toggleFields()>
+  <h2>Объемы геометрических фигур</h2>
+  <form action="/calculate_volume" method="POST">
+    <select name="shape" onchange="toggleFields()">
+      <option value="cube">Куб</option>
+      <option value="sphere">Сфера</option>
+      <option value="cylinder">Цилиндр</option>
+    </select>
+    <br/><br/>
+    <div id="radiusField">
+      Радиус: <input type="text" name="radius"><br/><br/>
+    </div>
+    <div id="heightField">
+      Высота: <input type="text" name="height"><br/><br/>
+    </div>
+    <div id="sideField">
+      Сторона: <input type="text" name="side"><br/><br/>
+    </div>
+    <div id="precisionField">
+    Точность: <input type="text" name="precision"><br/><br/>
+    </div>
+    <input type="submit" value="Вычислить">
+  </form>
+  <p>Объем: {{ volume }}</p>
+
+</body>
+</html>
